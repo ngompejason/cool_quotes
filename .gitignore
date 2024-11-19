@@ -1,0 +1,62 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+*.db
+*.log
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+
+# Virtual Environment
+venv/
+env/
+.env/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django migrations
+# migrations/
+
+# VS Code
+.vscode/
+
+
+# Testing
+*.cover
+*.tox/
+*.nox/
+.coverage
+nosetests.xml
+coverage.xml
+*.hypothesis/
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.spec
+
+# MyPy
+.mypy_cache/
+
+# Django REST framework
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment files
+.env.*
+.env
+
+# Local settings
+local_settings.py
