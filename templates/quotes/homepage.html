@@ -6,5 +6,13 @@
 {% endblock title %}
 
 {% block body %}
-  <h1> Welcome Ladies and Gentlemen to the coolest Religious Quotes ranking all time</h1>
+  <h1> Welcome Ladies and Gentlemen to the coolest Religious Quotes ranking of all time</h1>
+
+  {% for quote in quotes %}
+  <div>
+    <p>{{ quote.verse }}</p>
+    <span>{{ quote.verse_ref }}</span><span>  {{ quote.holy_book }}</span>
+  </div>
+  <br>
+  {% endfor %}
 {% endblock body %}
