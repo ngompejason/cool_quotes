@@ -25,10 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #My Apps
-    "users",
-    "quotes",
     
     #for Django-allauth
     "django.contrib.sites",
@@ -37,6 +33,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    
+    #My Apps
+    'users',
+    'quotes',
 ]
 
 AUTHENTICATION_BACKENDS = [
