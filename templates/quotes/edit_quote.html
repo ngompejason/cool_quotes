@@ -2,14 +2,14 @@
 {% load static %}
 
 {% block title %}
-  Post Quote
+  Edit Quote
 {% endblock title %}
 
 {% block body %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Renders form fields as <p> tags -->
-    <button type="submit">Post Quote</button>
+    <button type="submit">Edit Quote</button>
 </form>
 
 {% if form.errors %}
