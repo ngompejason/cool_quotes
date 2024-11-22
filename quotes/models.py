@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import CustomUser
 import uuid
+from django.urls import reverse
 
 # Create your models here.
 
@@ -44,6 +45,10 @@ class Quote(models.Model):
         verbose_name = "Quote"
         verbose_name_plural = "Quotes"
         ordering = ["-created_at"]
+        
+    def get_absolute_url(self):
+        return reverse("quote_detail", kwargs={"quote_id": self.id})
+    
         
     def __str__(self):
         return f'"{self.verse[:50]}" by {self.user.username} from {self.holy_book}'

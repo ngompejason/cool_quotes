@@ -7,10 +7,10 @@
 
 {% block body %}
   <h1> Welcome Ladies and Gentlemen to the coolest Religious Quotes ranking of all time</h1>
-
+  <a href="{% url 'create_quote' %}">post a quote</a>
   {% for quote in quotes %}
   <div>
-    <p>{{ quote.verse }}</p>
+    <p><a href="{{ quote.get_absolute_url }}">{{ quote.verse }}</a></p>
     <span>{{ quote.verse_ref }}</span><span>  {{ quote.holy_book }}</span>
   </div>
   <br>
