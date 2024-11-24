@@ -41,10 +41,19 @@ class Quote(models.Model):
         help_text="Date and time whn the quote was lst update."
     )
     
+    def upvote_count(self):
+        return self.votes.filter(vote_type = 1).count()
+    
+    def downvote_count(self):
+        return self.votes.filter(vote_type = -1).count()
+    
+    def score(self):
+        return self.upvote_count() - self.downvote_count()
+    
     class Meta:
         verbose_name = "Quote"
         verbose_name_plural = "Quotes"
-        ordering = ["-created_at"]
+        
         
     def get_absolute_url(self):
         return reverse("quote_detail", kwargs={"quote_id": self.id})
@@ -52,3 +61,41 @@ class Quote(models.Model):
         
     def __str__(self):
         return f'"{self.verse[:50]}" by {self.user.username} from {self.holy_book}'
+    
+    
+    def get_user_vote(self, user):
+        if user.is_authenticated:
+            vote = self.votes.filter(user=user).first()
+            return vote.vote_type if vote else None
+        return None
+
+
+class Vote(models.Model):
+    UPVOTE = 1
+    DOWNVOTE = -1
+    VOTE_CHOICES = [
+        (UPVOTE, 'Upvote'),
+        (DOWNVOTE, 'Downvote'),
+    ]
+    
+    user = models.ForeignKey(
+        CustomUser, 
+        on_delete=models.CASCADE, 
+        help_text="User who added the vote."
+    )
+    quote = models.ForeignKey(
+        Quote,
+        on_delete=models.CASCADE,
+        related_name='votes',
+        help_text="The quote voted"
+    )
+    vote_type = models.SmallIntegerField(choices=VOTE_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = "Vote"
+        verbose_name_plural = "Votes"
+
+    def __str__(self):
+        return f"{self.user.username} - {self.vote_type}"
+

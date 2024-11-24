@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Quote
+from .models import *
 
 # Register your models here.
 class QuoteAdmin(admin.ModelAdmin):
@@ -9,3 +9,11 @@ class QuoteAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)  # Order quotes by most recent first
 
 admin.site.register(Quote, QuoteAdmin)
+
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ('vote_type', 'created_at')
+    search_fields = ('vote_type',) 
+    list_filter = ('created_at',)
+    ordering = ('-created_at',)
+
+admin.site.register(Vote, VoteAdmin)

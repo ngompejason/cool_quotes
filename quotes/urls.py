@@ -8,4 +8,6 @@ urlpatterns = [
     path("post_quote/", create_quote, name="create_quote"),
     path("edit_quote/<uuid:quote_id>/", edit_quote, name="edit_quote"),
     path("delete_quote/<uuid:quote_id>/", delete_quote, name="delete_quote"),
+    
+    
 ]

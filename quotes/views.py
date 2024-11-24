@@ -13,8 +13,9 @@ def homepage(request):
     template = "quotes/homepage.html"
     return render(request, template, context)
 
-
-
+#==========================================================
+#Quote View
+#==========================================================
 def quote_detail(request, quote_id):
     quote = get_object_or_404(Quote, id = quote_id)
     context = {
@@ -60,3 +61,8 @@ def delete_quote(request, quote_id):
         messages.success(request, 'Quote deleted successfully!')
         return redirect('homepage')  # Replace with your list view name
     return redirect('homepage')
+
+#==========================================================
+#----------------------Vote View---------------------------
+#==========================================================
+
