@@ -66,3 +66,29 @@ def delete_quote(request, quote_id):
 #----------------------Vote View---------------------------
 #==========================================================
 
+def vote_quote(request, quote_id, vote_type):
+    
+    quote = get_object_or_404(Quote, id=quote_id)
+    vote_type = int(vote_type)
+    existing_vote = Vote.objects.filter(quote=quote, user=request.user).first()
+    
+    if existing_vote:
+        if existing_vote.vote_type == vote_type:
+            existing_vote.delete()
+            messages.success(request, "You have remove your vote.")
+        else:
+            existing_vote.vote_type = vote_type
+            existing_vote.save()
+            messages.success(request, "Your vote has been updated.")
+    else:
+        Vote.objects.create(
+            quote=quote,
+            user=request.user,
+            vote_type = vote_type
+        )
+        messages.success(request, "You just voted.")
+        
+    
+    # Redirect back to the referring page or a fallback if unavailable
+    next_url = request.GET.get('next', request.META.get('HTTP_REFERER', '/'))
+    return redirect(next_url)
