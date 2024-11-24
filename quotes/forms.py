@@ -1,5 +1,5 @@
 from django import forms
-from .models import Quote
+from .models import *
 
 class QuoteForm(forms.ModelForm):
     class Meta:
@@ -12,3 +12,8 @@ class QuoteForm(forms.ModelForm):
         
         return capitalize_title
     
+
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model = Report
+        fields = ["user_report",]

@@ -8,4 +8,6 @@
 {% block body %}
   <h1> {{ quote.verse }}</h1>
   <h3> <span>{{ quote.verse_ref }}</span> <span> {{ quote.holy_book }}</span></h3>
+
+  <a href={% url "create_report" quote.id %} style="background-color:red;">Report</a>
 {% endblock body %}

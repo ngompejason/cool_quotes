@@ -17,3 +17,11 @@ class VoteAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
 
 admin.site.register(Vote, VoteAdmin)
+
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('user_report', 'created_at')
+    search_fields = ('user_report',) 
+    list_filter = ('created_at',)
+    ordering = ('-created_at',)
+
+admin.site.register(Report, ReportAdmin)

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import QuoteForm
+from .forms import *
 from django.contrib import messages
 
 # Create your views here.
@@ -92,3 +92,22 @@ def vote_quote(request, quote_id, vote_type):
     # Redirect back to the referring page or a fallback if unavailable
     next_url = request.GET.get('next', request.META.get('HTTP_REFERER', '/'))
     return redirect(next_url)
+
+#==========================================================
+#----------------------Report View-------------------------
+#==========================================================
+
+def create_report(request, quote_id):
+    quote = get_object_or_404(Quote, id=quote_id)
+    if request.method == "POST":
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            report = form.save(commit=False)
+            report.user = request.user
+            report.quote = quote
+            report.save()
+            return redirect(f"/quote/{quote_id}")
+    else:
+        form = ReportForm()
+    template = "reports/create_report.html"
+    return render(request, template, {"form":form})

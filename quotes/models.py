@@ -98,4 +98,30 @@ class Vote(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.vote_type}"
+    
+
+class Report(models.Model):
+
+    user = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE
+        )
+    quote = models.ForeignKey(
+        Quote,
+        on_delete=models.CASCADE,
+        related_name="quotes"
+        )
+    user_report = models.TextField(null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Report"
+        verbose_name_plural = "Reports"
+
+    def __str__(self):
+        return f'{self.user_report[:50]}'
+
+    # def get_absolute_url(self):
+    #     return reverse("Report_detail", kwargs={"pk": self.pk})
+
 
