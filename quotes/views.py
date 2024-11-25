@@ -3,14 +3,19 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def homepage(request):
     quotes = Quote.objects.all()
-    user = CustomUser.objects.all()
+    paginator = Paginator(quotes, 20)
+    
+    page_number = request.GET.get('page', 1)
+    
+    page_obj = paginator.get_page(page_number)
     context = {
-        'quotes':quotes,
+        'page_obj': page_obj,
         }
     
     template = "quotes/homepage.html"
