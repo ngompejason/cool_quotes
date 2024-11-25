@@ -11,4 +11,5 @@ urlpatterns = [
     
     path("q/<uuid:quote_id>/v/<vote_type>/", vote_quote, name="vote_quote"),
     path("c_report/<uuid:quote_id>/", create_report, name="create_report"),
+    path("u/<int:user_id>/", user_profile, name="user_profile"),
 ]

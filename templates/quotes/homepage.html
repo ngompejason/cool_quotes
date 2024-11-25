@@ -6,8 +6,16 @@
 {% endblock title %}
 
 {% block body %}
+{% if user.is_authenticated %}
+<a href="{% url 'account_logout' %}">Logout</a>
+<p>Hello <a href="{{ user.get_absolute_url }}">{{ user.username}}</a></p>
+{% else %}
+<a href="{% url 'account_login' %}">Login</a>
+<a href="{% url 'account_signup' %}">Signin</a>
+{% endif %}
   <h1> Welcome Ladies and Gentlemen to the coolest Religious Quotes ranking of all time</h1>
   <a href="{% url 'create_quote' %}">post a quote</a>
+
 
 {% if messages %}
 <div class="messages">
@@ -24,6 +32,8 @@
     <p><a href="{{ quote.get_absolute_url }}">{{ quote.verse }}</a></p>
     <span>{{ quote.verse_ref }}</span>
     <span>  {{ quote.holy_book }}</span>
+
+    {% if user.is_authenticated and user == quote.user %}
     <span><a href="{% url 'edit_quote' quote.id %}">edit quote</a></span>
     <form method="post" action="{% url 'delete_quote' quote.id %}" style="display: inline;">
       {% csrf_token %}
@@ -31,8 +41,10 @@
         Delete
       </button>
     </form>
+    {% endif %}
 <br><br>
-  {% if user.is_authenticated %}
+
+{% if user.is_authenticated%}
     <form method="post" action="{% url 'vote_quote' quote.id 1 %}" style="display: inline;">
       {% csrf_token %}
       {{ quote.upvote_count }}
@@ -40,7 +52,6 @@
         👍
       </button>
     </form>
-
     <form method="post" action="{% url 'vote_quote' quote.id -1 %}" style="display: inline;">
       {% csrf_token %}
       {{ quote.downvote_count }}

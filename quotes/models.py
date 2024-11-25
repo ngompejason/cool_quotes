@@ -109,7 +109,7 @@ class Report(models.Model):
     quote = models.ForeignKey(
         Quote,
         on_delete=models.CASCADE,
-        related_name="quotes"
+        related_name="reports"
         )
     user_report = models.TextField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,0 +1,55 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}
+  Home
+{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="profile-header">
+        <h2>{{ user.username }}</h2>
+        <p>{{ user }}</p>
+    </div>
+    <dl class="profile-details">
+        <dt>Email:</dt>
+        <dd>{{ user }}</dd>
+
+        <dt>User Name:</dt>
+        <dd>{{ user.username }}</dd>
+
+        <dt>Date Joined:</dt>
+        <dd>{{ user.start_date|date:"F d, Y" }}</dd>
+
+        <dt>Last Login:</dt>
+        <dd>{{ user.last_login|date:"F d, Y H:i" }}</dd>
+    </dl>
+    <div class="actions">
+        <a href="{% url 'account_logout' %}">Logout</a>
+    </div>
+</div>
+
+
+
+<h1>Quotes posted by you and Related Reports</h1>
+<ul>
+    {% for quote in quotes %}
+        <li>
+            <strong><p><a href="{{ quote.get_absolute_url }}">{{ quote.verse }}</a></p></strong>
+            <p>{{ quote.verse_ref }}  {{ quote.holy_book }}</p>
+            <h4>Reports:</h4>
+            <ul>
+                {% for report in quote.reports.all %}
+                    <li>
+                        {{ report.user_report }} (Reported at: {{ report.created_at }})
+                    </li>
+                {% empty %}
+                    <li>No reports for this post.</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock body %}

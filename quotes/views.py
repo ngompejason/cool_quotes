@@ -8,7 +8,10 @@ from django.contrib import messages
 
 def homepage(request):
     quotes = Quote.objects.all()
-    context = {'quotes':quotes}
+    user = CustomUser.objects.all()
+    context = {
+        'quotes':quotes,
+        }
     
     template = "quotes/homepage.html"
     return render(request, template, context)
@@ -54,6 +57,7 @@ def edit_quote(request, quote_id):
     template = "quotes/create_quote.html"
     return render(request, template, {"form":form})
 
+@login_required(login_url="/accounts/login/")
 def delete_quote(request, quote_id):
     if request.method == 'POST':
         quote = get_object_or_404(Quote, id=quote_id)
@@ -97,6 +101,7 @@ def vote_quote(request, quote_id, vote_type):
 #----------------------Report View-------------------------
 #==========================================================
 
+@login_required(login_url="/accounts/login/")
 def create_report(request, quote_id):
     quote = get_object_or_404(Quote, id=quote_id)
     if request.method == "POST":
@@ -111,3 +116,15 @@ def create_report(request, quote_id):
         form = ReportForm()
     template = "reports/create_report.html"
     return render(request, template, {"form":form})
+
+
+@login_required(login_url="/accounts/login/")
+def user_profile(request, user_id):
+    user = get_object_or_404(CustomUser, id=user_id)
+    quotes = Quote.objects.filter(user=user).prefetch_related('reports')
+    context = {
+        "user":user,
+        "quotes":quotes
+    }
+    template = "accounts/user_profile.html"
+    return render(request, template, context)
