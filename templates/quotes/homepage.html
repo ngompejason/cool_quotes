@@ -27,7 +27,7 @@
 </div>
 {% endif %}
 
-  {% for quote in quotes %}
+  {% for quote in page_obj.object_list %}
   <div>
     <p><a href="{{ quote.get_absolute_url }}">{{ quote.verse }}</a></p>
     <span>{{ quote.verse_ref }}</span>
@@ -67,4 +67,21 @@
 
   <br>
   {% endfor %}
+
+
+
+  <div>
+    <!-- Previous Page Link -->
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <!-- Current Page Info -->
+    <span>Page {{ page_obj.number }}</span>
+
+    <!-- Next Page Link -->
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% endif %}
+</div>
 {% endblock body %}
