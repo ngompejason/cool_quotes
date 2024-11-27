@@ -37,10 +37,6 @@ INSTALLED_APPS = [
     #My Apps
     'users',
     'quotes',
-    
-    #django_tailwindcss
-    'tailwind',
-    'theme',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -74,7 +70,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', 
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 # Override the default User model with a custom model 'CustomUser' from the 'users' app
@@ -153,13 +149,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
-
-TAILWIND_APP_NAME = 'theme'
-
-#on windows
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
