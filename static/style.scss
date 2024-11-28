@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* font-family: 'Inter', sans-serif;
+font-family: 'Playfair Display', serif; */
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+
+.material-symbols-outlined{
+    font-weight: 100 !important;
+    font-size: 1.4em;
+    transition: transform 0.3s ease;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    .logo-text {
+        font-size: clamp(18px, 4vw, 24px);
+        font-weight: bold;
+        color: #333;
+        font-family: "Playfair Display", serif;
+    }
+
+    .profile-pic-container {
+        position: relative;
+
+        .profile-pic {
+            width: clamp(30px, 8vw, 40px);
+            height: clamp(30px, 8vw, 40px);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .create-post-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: clamp(5px, 2vw, 10px) clamp(10px, 3vw, 15px);
+        cursor: pointer;
+        font-size: clamp(12px, 3vw, 14px);
+        transition: background-color 0.2s ease-in-out;
+        margin-right: 15px;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+    }
+
+    .menu {
+        position: absolute;
+        top: 100%; /* Position right under the profile picture */
+        right: 0; /* Align with the left edge of the profile picture */
+        background-color: #fff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        display: none;
+        z-index: 1000;
+        min-width: 180px;
+        margin-top: 10px; /* Small gap between profile pic and menu */
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                padding: 10px 20px;
+                border-bottom: 1px solid #ddd;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: clamp(12px, 3vw, 14px);
+                    display: block;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/* Ensure the container is a flexbox */
+.text-wrapper {
+    h1{
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 6rem); /* Adjust font size dynamically */
+        min-width: 380px;
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        line-height: 115.3%;
+        max-width: 80%;
+        margin: auto;
+        margin-top: 9rem;
+        padding: 3rem 3rem;
+    }
+
+    p {
+        text-align: center;
+        font-family: "Merriweather", sans-serif;
+        font-size: clamp(1rem, 2.5vw, 2rem); /* Responsive font size */
+        max-width: 90%; /* Limit width to a percentage of the container */
+        font-weight: 300;
+        line-height: 1.5; /* Use a relative unit for consistent spacing */
+        margin: 0 auto; /* Center align in the container, optional */
+        max-width: 90%;
+    }   
+  }
+
+ /* CTA buttons styling */
+ .cta-buttons {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .cta-button {
+    display: flex;              /* Use Flexbox to align items horizontally */
+    align-items: center;        /* Vertically align the text and icon */
+    justify-content: center;    /* Center the content */
+    padding: 12px 20px;
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: "Playfair Display", serif;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    gap: 3px;
+
+    &:hover{
+        color: #555;
+
+        .material-symbols-outlined {
+            transform: translateX(8px);  /* Move the icon to the right on hover */
+          }
+
+    }
+  }
+
+
+
+
+
+
+/* Responsive styling for phones */
+@media (max-width: 768px) {
+    .navbar {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: 
+            "profilePic logo createPost";
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+
+        .logo-text {
+            grid-area: logo;
+            justify-self: center;
+            text-align: center;
+        }
+
+        .profile-pic-container {
+            grid-area: profilePic;
+            justify-self: flex-start;
+        }
+
+        .create-post-btn {
+            grid-area: createPost;
+            justify-self: flex-end;
+            margin-right: 0;
+        }
+
+        .menu{ 
+            left: 0;  /* Align to the left for smaller screens */
+            right: auto; 
+        }
+    }
+}
+
+/* Large screen layout */
+@media (min-width: 769px) {
+    .navbar {
+        justify-content: flex-start;
+        align-items: center;
+
+        .logo-text {
+            margin-right: auto;
+        }
+
+        .create-post-btn {
+            margin-left: auto;
+        }
+
+    }
+}
+
+
+
+  
+  
+ 

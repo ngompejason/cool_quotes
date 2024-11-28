@@ -5,117 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <style>
-        :root {
-            --kaki-dark: #6b5b4c;
-            --kaki-medium: #8b7355;
-            --kaki-light: #a0522d;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--kaki-dark);
-            color: var(--white);
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--kaki-light);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--white);
-            margin: 3px 0;
-            transition: 0.4s;
-        }
-
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                background-color: var(--kaki-medium);
-                padding: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100;400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="logo">MoneyTrack</a>
-        <div class="nav-links">
-            <a href="#">Dashboard</a>
-            <a href="#">Transactions</a>
-            <a href="#">Investments</a>
-            <a href="#">Accounts</a>
-        </div>
-        <div class="menu-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
+    {% include "navbar.html" %}
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
     {% block body %}
       
     {% endblock body %}
+
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>

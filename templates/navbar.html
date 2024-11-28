@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="navbar">
+    <div class="logo-text">
+        CCQ
+    </div>
+    
+    <button class="create-post-btn">Create Post</button>
+    <div class="profile-pic-container">
+        <img src="{% static 'img/pp.jpg' %}" alt="Profile" id="profileMenuToggle" class="profile-pic">
+
+        <div id="menu" class="menu">
+            <ul>
+                <li><a href="#">My GPTs</a></li>
+                <li><a href="#">Customize ChatGPT</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Upgrade Plan</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
