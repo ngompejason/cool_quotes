@@ -13,8 +13,8 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    padding-top: 60px;
+    font-family: "Playfair Display", serif;
+    // padding-top: 60px;
     min-height: 100vh;
 }
 
@@ -22,6 +22,42 @@ body {
     font-weight: 100 !important;
     font-size: 1.4em;
     transition: transform 0.3s ease;
+}
+
+.a_btn{
+    padding: 12px 20px;
+    font-size: clamp(1rem, 2.5vw, 2rem); 
+    font-weight: 400;
+    font-family: "Playfair Display", serif;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    gap: 3px;
+
+    &:hover{
+        color: #555;
+
+    }
+}
+
+.btn{
+    padding: 1rem 1.5rem;
+    font-size: clamp(1rem, 2.5vw, 2rem); 
+    font-weight: 400;
+    font-family: "Playfair Display", serif;
+    background-color: #000;
+    color: #fff;
+    transition: color 0.3s ease;
+    border: 0;
+
+    &:hover{
+        background-color: #262626;
+
+    }
+
+    &-create_quote{
+        margin-top: 2rem;
+    }
 }
 
 .navbar {
@@ -40,8 +76,13 @@ body {
     .logo-text {
         font-size: clamp(18px, 4vw, 24px);
         font-weight: bold;
-        color: #333;
+        color: #222;
         font-family: "Playfair Display", serif;
+
+        a{  
+            text-decoration: none;
+            color: inherit;
+        }
     }
 
     .profile-pic-container {
@@ -60,21 +101,6 @@ body {
         }
     }
 
-    .create-post-btn {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: clamp(5px, 2vw, 10px) clamp(10px, 3vw, 15px);
-        cursor: pointer;
-        font-size: clamp(12px, 3vw, 14px);
-        transition: background-color 0.2s ease-in-out;
-        margin-right: 15px;
-
-        &:hover {
-            background-color: #0056b3;
-        }
-    }
 
     .menu {
         position: absolute;
@@ -117,9 +143,13 @@ body {
     }
 }
 
+.hero-section{
+    display: grid; /* Enables grid layout */
+    place-items: center; /* Centers both horizontally and vertically */
+    padding-top: 8rem;
+    gap: 2rem; /* Reduce spacing between the elements */
 
-
-/* Ensure the container is a flexbox */
+    /* Ensure the container is a flexbox */
 .text-wrapper {
     h1{
         text-align: center;
@@ -130,7 +160,7 @@ body {
         line-height: 115.3%;
         max-width: 80%;
         margin: auto;
-        margin-top: 9rem;
+        // margin-top: 9rem;
         padding: 3rem 3rem;
     }
 
@@ -142,7 +172,6 @@ body {
         font-weight: 300;
         line-height: 1.5; /* Use a relative unit for consistent spacing */
         margin: 0 auto; /* Center align in the container, optional */
-        max-width: 90%;
     }   
   }
 
@@ -151,32 +180,129 @@ body {
     padding-top: 3rem;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 1rem;
   }
   
   .cta-button {
     display: flex;              /* Use Flexbox to align items horizontally */
     align-items: center;        /* Vertically align the text and icon */
     justify-content: center;    /* Center the content */
-    padding: 12px 20px;
-    font-size: 2rem;
-    font-weight: 400;
-    font-family: "Playfair Display", serif;
-    color: #000;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    gap: 3px;
-
-    &:hover{
-        color: #555;
 
         .material-symbols-outlined {
             transform: translateX(8px);  /* Move the icon to the right on hover */
           }
 
     }
-  }
+}
 
+.footer {
+    position: fixed; /* Fixes the footer at the bottom of the viewport */
+    bottom: 0; /* Aligns the footer to the bottom edge */
+    width: 100%; /* Ensures the footer spans the full width */
+    text-align: center; /* Centers the text horizontally */
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem); /* Responsive font size */
+    padding: 0.5rem 0; /* Add spacing inside the footer */
+
+    a{
+        text-decoration: none; /* Optional: Remove underline from the link */
+        color: inherit;
+    }
+}
+  
+//==========================================================
+//----------------------Create Quote------------------------
+//==========================================================
+
+// .poste_quote-container{
+//     display: grid;
+//     place-items: center;
+//     height: 100vh;
+
+//     .form-group {
+//         position: relative;
+//         margin-bottom: 2.4rem;
+        
+//         label {
+//             position: absolute;
+//             top: 50%;
+//             left: 1rem;
+//             transform: translateY(-50%);
+//             color: #999;
+//             pointer-events: none;
+//             transition: 0.3s ease;
+//             font-size: 1.9rem;
+//           }
+
+//           input {
+//             width: 100%;
+//             padding: 1.6rem;
+//             border: 1px solid #ccc;
+//             // border-radius: 4px;
+//             font-size: 1.9rem;
+
+//             &:focus + label,
+//             &:not(:placeholder-shown) + label {
+//                 top: 0;
+//                 font-size: 1.2rem;
+//                 color: #666;
+//                 background-color: #fff;
+//                 padding: 0 4px;
+//             }
+//           }
+
+
+    
+//     }
+// }
+
+.form-wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+
+    .form-group {
+        position:relative;  
+    
+            & + .form-group {
+                margin-top: 6rem;
+            }
+        }
+    
+    label {
+        position: absolute;
+        left: 0;
+        top: 1rem;
+        color: #999;
+        background-color: #fff;
+        z-index: 10;
+        transition: transform 150ms ease-out, font-size 150ms ease-out;
+        font-size: clamp(1rem, 2vw + 1rem, 1.6rem);
+        }
+
+    .focused label {
+        transform: translateY(-125%);
+        font-size: clamp(1.5rem, 3vw + 1rem, 2.6rem);
+        }
+    
+    .form-input {
+        position: relative;
+        padding: 12px 0px 5px 0;
+        width: 100%;
+        outline: 0;
+        border: 0;
+        box-shadow: 0 1px 0 0 #e5e5e5;
+        transition: box-shadow 150ms ease-out;
+        font-size: clamp(2rem, 4vw + 1rem, 4.5rem);
+        
+        &:focus {
+            box-shadow: 0 .1rem 0 0 #000;
+        }
+    }
+
+    .form-input.filled {
+        box-shadow: 0 .1rem 0 0 lightgreen;
+    }
+  }
 
 
 

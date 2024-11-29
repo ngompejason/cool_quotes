@@ -6,11 +6,11 @@
 {% endblock title %}
 
 {% block body %}
-<form method="post">
+{% comment %} <form method="post">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Renders form fields as <p> tags -->
     <button type="submit">Post Quote</button>
-</form>
+</form> {% endcomment %}
 
 {% if form.errors %}
 <ul>
@@ -19,5 +19,25 @@
     {% endfor %}
 </ul>
 {% endif %}
+
+<div class="form-wrapper">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+        {{ form.verse.label_tag }}
+        {{ form.verse }}
+        </div>
+        <div class="form-group">
+        {{ form.holy_book.label_tag }}
+        {{ form.holy_book }}
+        </div>
+        <div class="form-group">
+        {{ form.verse_ref.label_tag }}
+        {{ form.verse_ref }}
+        </div>
+
+        <button type="submit" class="btn btn-create_quote">Post a Quote</button>
+    </form>
+</div>
 
 {% endblock body %}

@@ -2,10 +2,12 @@
 
 <div class="navbar">
     <div class="logo-text">
-        CCQ
+        <a href="{% url "homepage" %}" class="">CCQ</a>
     </div>
+    {% if user.is_authenticated %}
+    <a href="{% url "create_quote" %}" class="a_btn">Post A Quote</a>
     
-    <button class="create-post-btn">Create Post</button>
+    
     <div class="profile-pic-container">
         <img src="{% static 'img/pp.jpg' %}" alt="Profile" id="profileMenuToggle" class="profile-pic">
 
@@ -19,4 +21,7 @@
             </ul>
         </div>
     </div>
+    {% else %}
+    <a class="btn" href="{% url "account_login" %}">Log In</a>
+    {% endif %}
 </div>
