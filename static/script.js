@@ -21,14 +21,14 @@ window.addEventListener('click', function(event) {
 //==========================================================
 
 // Add event listener for focus
-document.querySelectorAll('input').forEach(function(input) {
+document.querySelectorAll('input, textarea').forEach(function(input) {
     input.addEventListener('focus', function() {
         this.closest('.form-group').classList.add('focused');
     });
 });
 
 // Add event listener for blur
-document.querySelectorAll('input').forEach(function(input) {
+document.querySelectorAll('input, textarea').forEach(function(input) {
     input.addEventListener('blur', function() {
         var inputValue = this.value;
         if (inputValue === "") {

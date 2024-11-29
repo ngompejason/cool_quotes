@@ -12,6 +12,7 @@ html {
 body {
   margin: 0;
   font-family: "Playfair Display", serif;
+  padding-top: 6rem;
   min-height: 100vh;
 }
 
@@ -37,7 +38,7 @@ body {
 
 .btn {
   padding: 1rem 1.5rem;
-  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: 400;
   font-family: "Playfair Display", serif;
   background-color: #000;
@@ -126,7 +127,7 @@ body {
 .hero-section {
   display: grid; /* Enables grid layout */
   place-items: center; /* Centers both horizontally and vertically */
-  padding-top: 8rem;
+  padding-top: 3rem;
   gap: 2rem; /* Reduce spacing between the elements */
   /* Ensure the container is a flexbox */
   /* CTA buttons styling */
@@ -182,7 +183,6 @@ body {
 .form-wrapper {
   display: grid;
   place-items: center;
-  height: 100vh;
 }
 .form-wrapper .form-group {
   position: relative;
@@ -202,7 +202,7 @@ body {
 }
 .form-wrapper .focused label {
   transform: translateY(-125%);
-  font-size: clamp(1.5rem, 3vw + 1rem, 2.6rem);
+  font-size: clamp(0.9rem, 2vw + 1rem, 1.6rem);
 }
 .form-wrapper .form-input {
   position: relative;
@@ -212,12 +212,26 @@ body {
   border: 0;
   box-shadow: 0 1px 0 0 #e5e5e5;
   transition: box-shadow 150ms ease-out;
-  font-size: clamp(2rem, 4vw + 1rem, 4.5rem);
+  font-size: clamp(1rem, 2vw + 0.4rem, 2.5rem);
 }
 .form-wrapper .form-input:focus {
   box-shadow: 0 0.1rem 0 0 #000;
 }
-.form-wrapper .form-input.filled {
+.form-wrapper .form-textarea {
+  position: relative;
+  padding: 12px 0px 5px 0;
+  width: 100%;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 1px 0 0 #e5e5e5;
+  transition: box-shadow 150ms ease-out;
+  font-size: clamp(1rem, 3vw + 0.4rem, 1.5rem);
+}
+.form-wrapper .form-textarea:focus {
+  box-shadow: 0 0.1rem 0 0 #000;
+}
+.form-wrapper .form-input.filled,
+.form-wrapper .form-textarea.filled {
   box-shadow: 0 0.1rem 0 0 lightgreen;
 }
 

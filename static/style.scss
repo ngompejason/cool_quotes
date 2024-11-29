@@ -14,7 +14,7 @@ html {
 body {
     margin: 0;
     font-family: "Playfair Display", serif;
-    // padding-top: 60px;
+    padding-top: 6rem;
     min-height: 100vh;
 }
 
@@ -42,7 +42,7 @@ body {
 
 .btn{
     padding: 1rem 1.5rem;
-    font-size: clamp(1rem, 2.5vw, 2rem); 
+    font-size: clamp(1rem, 2.5vw, 1.2rem); 
     font-weight: 400;
     font-family: "Playfair Display", serif;
     background-color: #000;
@@ -146,7 +146,7 @@ body {
 .hero-section{
     display: grid; /* Enables grid layout */
     place-items: center; /* Centers both horizontally and vertically */
-    padding-top: 8rem;
+    padding-top: 3rem;
     gap: 2rem; /* Reduce spacing between the elements */
 
     /* Ensure the container is a flexbox */
@@ -213,59 +213,18 @@ body {
 //----------------------Create Quote------------------------
 //==========================================================
 
-// .poste_quote-container{
-//     display: grid;
-//     place-items: center;
-//     height: 100vh;
-
-//     .form-group {
-//         position: relative;
-//         margin-bottom: 2.4rem;
-        
-//         label {
-//             position: absolute;
-//             top: 50%;
-//             left: 1rem;
-//             transform: translateY(-50%);
-//             color: #999;
-//             pointer-events: none;
-//             transition: 0.3s ease;
-//             font-size: 1.9rem;
-//           }
-
-//           input {
-//             width: 100%;
-//             padding: 1.6rem;
-//             border: 1px solid #ccc;
-//             // border-radius: 4px;
-//             font-size: 1.9rem;
-
-//             &:focus + label,
-//             &:not(:placeholder-shown) + label {
-//                 top: 0;
-//                 font-size: 1.2rem;
-//                 color: #666;
-//                 background-color: #fff;
-//                 padding: 0 4px;
-//             }
-//           }
-
-
-    
-//     }
-// }
-
 .form-wrapper {
     display: grid;
     place-items: center;
-    height: 100vh;
+    // height: 100vh;
 
     .form-group {
-        position:relative;  
-    
-            & + .form-group {
-                margin-top: 6rem;
-            }
+        position:relative;
+        
+        & + .form-group{
+            margin-top: 6rem;
+        }
+
         }
     
     label {
@@ -281,7 +240,7 @@ body {
 
     .focused label {
         transform: translateY(-125%);
-        font-size: clamp(1.5rem, 3vw + 1rem, 2.6rem);
+        font-size: clamp(.9rem, 2vw + 1rem, 1.6rem);
         }
     
     .form-input {
@@ -292,19 +251,46 @@ body {
         border: 0;
         box-shadow: 0 1px 0 0 #e5e5e5;
         transition: box-shadow 150ms ease-out;
-        font-size: clamp(2rem, 4vw + 1rem, 4.5rem);
+        font-size: clamp(1rem, 2vw + .4rem, 2.5rem);
         
         &:focus {
             box-shadow: 0 .1rem 0 0 #000;
         }
     }
 
-    .form-input.filled {
+    .form-textarea {
+        position: relative;
+        padding: 12px 0px 5px 0;
+        width: 100%;
+        outline: 0;
+        border: 0;
+        box-shadow: 0 1px 0 0 #e5e5e5;
+        transition: box-shadow 150ms ease-out;
+        font-size: clamp(1rem, 3vw + .4rem, 1.5rem);
+        
+        &:focus {
+            box-shadow: 0 .1rem 0 0 #000;
+        }
+    }
+
+    .form-input.filled,
+    .form-textarea.filled {
         box-shadow: 0 .1rem 0 0 lightgreen;
     }
   }
+//==========================================================
+//----------------------Report Quote------------------------
+//==========================================================
 
 
+
+//==========================================================
+//----------------------ALL Quote------------------------
+//==========================================================
+
+  .quotes-container{
+    // padding: 6rem;
+  }
 
 
 

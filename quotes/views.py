@@ -22,8 +22,23 @@ def homepage(request):
     return render(request, template, context)
 
 #==========================================================
-#Quote View
+#------------------------Quote View------------------------
 #==========================================================
+def all_quotes(request):
+    quotes = Quote.objects.filter()
+    paginator = Paginator(quotes, 20)
+    
+    page_number = request.GET.get('page', 1)
+    
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj,
+        }
+    
+    template = "quotes/all_quotes.html"
+    return render(request, template, context)
+
+
 def quote_detail(request, quote_id):
     quote = get_object_or_404(Quote, id = quote_id)
     context = {

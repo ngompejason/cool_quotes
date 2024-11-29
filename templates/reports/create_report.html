@@ -2,15 +2,23 @@
 {% load static %}
 
 {% block title %}
-  Post Quote
+  Report Quote
 {% endblock title %}
 
 {% block body %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}  <!-- Renders form fields as <p> tags -->
-    <button type="submit">Report</button>
-</form>
+
+
+<div class="form-wrapper">
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+        {{ form.user_report.label_tag }}
+        {{ form.user_report }}
+        </div>
+
+        <button type="submit" class="btn">Report</button>
+    </form>
+</div>
 
 {% if form.errors %}
 <ul>

@@ -6,8 +6,11 @@ class QuoteForm(forms.ModelForm):
         model = Quote
         fields = ["verse","holy_book","verse_ref"]
         
-        widgets = {field: forms.TextInput(attrs={'class': 'form-input'})
-                   for field in fields}
+        widgets = {
+            'verse': forms.Textarea(attrs={'class': 'form-textarea',}),
+            'holy_book': forms.TextInput(attrs={'class': 'form-input',}),
+            'verse_ref': forms.TextInput(attrs={'class': 'form-input',}),
+        }
     
     def clean_holy_book(self):
         holy_book = self.cleaned_data["holy_book"]
@@ -22,3 +25,7 @@ class ReportForm(forms.ModelForm):
     class Meta:
         model = Report
         fields = ["user_report",]
+        
+        widgets = {
+            'user_report': forms.Textarea(attrs={'class': 'form-textarea',})
+        }

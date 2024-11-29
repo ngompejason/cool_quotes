@@ -1,0 +1,26 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}
+  CCQ
+{% endblock title %}
+
+
+{% block body %}
+<div class="quotes-container">
+    {% for quote in page_obj %}
+        <div class="quote-card">
+           <p class="quote-verse"><a href ="{{quote.get_absolute_url}}">{{ quote.verse }}</a></p>
+            <p class="quote-details">
+                <strong>{{ quote.holy_book }}</strong> - {{ quote.verse_ref }}
+            </p>
+            {% if quote.date_added %}
+                <p class="quote-date">Posted on {{ quote.date_added|date:"F j, Y" }}</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p class="no-quotes">No quotes found. Be the first to post one!</p>
+    {% endfor %}
+</div>
+{% endblock body %}
+
